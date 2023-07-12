@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,8 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{$name}}</title>
 </head>
-<body>
+<body> --}}
+    @extends('template.layout')
+    @section('content')
     <h1>hello</h1>
+    <h2>{{$name}}</h2>
     <p>{{$title}}</p>
     <form action="{{url('/student')}}" method="post">
         @csrf
@@ -22,15 +25,13 @@
         <tr>
             <td>id</td>
             <td>name</td>
-          
+      
         </tr>
-
-        @foreach ($students as $item)
-          <tr>
-            <td>{{$item->id}}</td>
-            <td>{{$item->name}}</td>
-        </tr>  
-        @endforeach
+            @foreach ($students as $item)
+                <tr>
+                <td>{{$item->id}}</td>
+                <td>{{$item->name}}</td>
+                </tr>  
+            @endforeach
     </table>
-</body>
-</html>
+    @endsection
