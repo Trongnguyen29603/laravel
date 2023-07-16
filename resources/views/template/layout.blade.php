@@ -34,7 +34,7 @@
 
 <!-- Content -->
 <div class="container mt-4">
-    @include('errors')
+    @include('template.errors')
     @yield('content')
 </div>
 

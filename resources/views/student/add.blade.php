@@ -1,6 +1,6 @@
 @extends('template.layout')
 @section('content')
-<form action="{{url('add-student')}}" method="POST">
+<form action="{{route('route_student_add')}}" method="POST">
     @csrf
     <div class="mb-3">
       <label  class="form-label">Email address</label>
@@ -8,7 +8,7 @@
     
     </div>
     <div class="mb-3">
-        <label f class="form-label">name</label>
+        <label  class="form-label">name</label>
         <input type="name" class="form-control" name="name">
       
       </div>

@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StudentRequest;
+use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
+
 class StudentController extends Controller
 {
     public function index(Request $request){
@@ -41,9 +44,31 @@ class StudentController extends Controller
     public function add(StudentRequest $request){
         //nếu như tồn lại request post ( khi người dùng bấm nút là post)
         if($request->post()){
-           
+            $students = Student::create($request->except('_token'));
+            if($students->id){
+                Session::flash('success','theem moi thanh cong');
+                return redirect()->route('route_student_add');
+            }
         }
         return view('student.add');
 
     }
+    public function edit(StudentRequest $request,$id){
+         //c1 DB:query
+            //  $student = DB::table('students')
+            //  ->where('id','=',$id)
+            //  ->first();
+            //c2 dung model
+            $student = Student::find($id);
+            if($request->isMethod('POST')){
+                Student::where('id',$id)
+                ->update($request->except('_token'));
+                if($request){
+                    Session::flash('success','sua thanh cong sv');
+                    return redirect()->route('route_student_edit',['id'=>$id]);
+                }
+            }
+            // dd($student);
+            return view('student.edit',compact('student'));
+        }
 }

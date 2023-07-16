@@ -13,7 +13,7 @@ class StudentRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -30,8 +30,10 @@ class StudentRequest extends FormRequest
         case 'POST':
             switch($currdentAction): 
                 case 'add':
+                
                       $rule = [
-                        "email"=> "required|email|unique:studens",
+                        // "email"=> "required|email|unique:students",
+                        "email"=>"required",
                         "name"=>"required"
                       ];
                       break;

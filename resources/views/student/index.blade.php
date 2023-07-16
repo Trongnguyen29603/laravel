@@ -18,7 +18,7 @@
            email
             <input type="text" name="email">
         </label>
-        <input type="text" name="seach">
+        {{-- <input type="text" name="seach"> --}}
         <input type="submit" name="btnseach" value="tìm kiếm">
     </form>
     <table border="1">
