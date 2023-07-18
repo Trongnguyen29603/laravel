@@ -9,5 +9,5 @@ class Student extends Model
 {
     use HasFactory;
     protected $table = "students";//phải điền đúng tên bảng mà mình cần trỏ tới trong cơ sở dữ liệu 
-    protected $fillable = ['id','name','email'];
+    protected $fillable = ['id','name','email','image'];
 }

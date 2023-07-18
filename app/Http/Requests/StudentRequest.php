@@ -34,8 +34,10 @@ class StudentRequest extends FormRequest
                       $rule = [
                         // "email"=> "required|email|unique:students",
                         "email"=>"required",
-                        "name"=>"required"
+                        "name"=>"required",
+                        'image'=>"required|image|mimes:jpeg,jpg,png|max:5120"
                       ];
+                 
                       break;
                     endswitch;
                 

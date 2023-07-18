@@ -44,7 +44,13 @@ class StudentController extends Controller
     public function add(StudentRequest $request){
         //nếu như tồn lại request post ( khi người dùng bấm nút là post)
         if($request->post()){
-            $students = Student::create($request->except('_token'));
+            $params = $request->except('_token');
+            //nếu như tồn tại file post lên
+            if($request->hasFile('image') && $request->file('image')->isValid()){
+                $params['image']= uploadFile('hinh',$request->file('image'));
+            }
+            $students = Student::create($params);
+            // $students = Student::create($request->except('_token'));
             if($students->id){
                 Session::flash('success','theem moi thanh cong');
                 return redirect()->route('route_student_add');

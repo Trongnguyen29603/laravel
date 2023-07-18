@@ -43,9 +43,12 @@
 <p>Đây là footer của trang web.</p>
 <p>&copy; 2023 Tên của bạn</p>
 </footer>
+<script src="{{ asset('libs/jquery/dist/jquery.min.js') }}"></script>
 
+<script src="{{ asset('libs/input-mask/jquery.inputmask.js') }}"></script>
 <script src="{{asset('bootstrap/js/boostrap.bundle.js')}}"></script>
 <script src="{{asset('bootstrap/js/boostrap.js')}}"></script>
 <script src=""></script>
+@yield('script')
 </body>
 </html>
