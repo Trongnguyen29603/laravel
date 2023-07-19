@@ -16,7 +16,7 @@ class StudentController extends Controller
         //khi nào là get và khi nào là post
         //khi tồn tại là post
         $students = DB::table('students')
-        ->select('id','name')// lấy theo những từng mong muốn 
+        ->select('id','name','image')// lấy theo những từng mong muốn 
         ->get();
         if($request->post() && $request->email){
             $students = DB::table('students')
@@ -59,6 +59,7 @@ class StudentController extends Controller
         return view('student.add');
 
     }
+    
     public function edit(StudentRequest $request,$id){
          //c1 DB:query
             //  $student = DB::table('students')

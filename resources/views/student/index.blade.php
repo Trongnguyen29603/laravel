@@ -25,12 +25,13 @@
         <tr>
             <td>id</td>
             <td>name</td>
-      
+            <td>image</td>
         </tr>
             @foreach ($students as $item)
                 <tr>
                 <td>{{$item->id}}</td>
                 <td>{{$item->name}}</td>
+                <td><img src="{{ $item->image?''.Storage::url($item->image):''}}" style="width: 100px" /></td>
                 </tr>  
             @endforeach
     </table>
