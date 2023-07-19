@@ -23,6 +23,7 @@ return new class extends Migration
             $table->integer("status")->default(2);//khởi tạo giá trị là 1
              
             $table->timestamps();
+            $table->softDeletes(); 
         });
     }
 

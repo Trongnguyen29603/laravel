@@ -7,6 +7,7 @@ use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 
 class StudentController extends Controller
 {
@@ -17,6 +18,7 @@ class StudentController extends Controller
         //khi tồn tại là post
         $students = DB::table('students')
         ->select('id','name','image')// lấy theo những từng mong muốn 
+        ->whereNull('deleted_at')
         ->get();
         if($request->post() && $request->email){
             $students = DB::table('students')
@@ -68,8 +70,18 @@ class StudentController extends Controller
             //c2 dung model
             $student = Student::find($id);
             if($request->isMethod('POST')){
+                $params = $request->except('_token');
+                if($request->hasFile('image') && $request->file('image')->isValid()){
+                    //xóa ảnh cũ
+                    $resultDL= Storage::delete('/public'.$student->image);
+                    if($resultDL){
+                        $params['image']= uploadFile('hinh',$request->file('image'));
+                    }
+                }else{
+                    $params['image'] = $student->image;
+                }
                 Student::where('id',$id)
-                ->update($request->except('_token'));
+                ->update($params);
                 if($request){
                     Session::flash('success','sua thanh cong sv');
                     return redirect()->route('route_student_edit',['id'=>$id]);
@@ -78,4 +90,9 @@ class StudentController extends Controller
             // dd($student);
             return view('student.edit',compact('student'));
         }
+    public function delete($id){
+    Student::where('id',$id)->delete();
+    Session::flash('success','xóa thanh cong sv'.$id);
+    return redirect()->route('route_student_index');
+    }     
 }

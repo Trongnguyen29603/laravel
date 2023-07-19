@@ -17,8 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/student',[App\Http\Controllers\StudentController::class,'index']);
+Route::get('/student',[App\Http\Controllers\StudentController::class,'index'])->name('route_student_index');
 Route::post('/student',[App\Http\Controllers\StudentController::class,'index']);
 Route::match(['GET','POST'],'/student/add',[App\Http\Controllers\StudentController::class,'add'])->name('route_student_add');
 Route::match(['GET','POST'],'/student/edit/{id}',[App\Http\Controllers\StudentController::class,'edit'])->name('route_student_edit');
-
+Route::get('/student/delete/{id}',[App\Http\Controllers\StudentController::class,'delete'])->name('route_student_delete');
