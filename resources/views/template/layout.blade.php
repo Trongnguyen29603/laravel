@@ -28,6 +28,9 @@
 <li class="nav-item">
 <a class="nav-link" href="#">Liên hệ</a>
 </li>
+<li class="nav-item">
+    <a class="nav-link" href="{{route('route_student_logout')}}">ddawng xuaats</a>
+    </li>
 </ul>
 </div>
 </nav>

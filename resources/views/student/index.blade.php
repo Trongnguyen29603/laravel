@@ -34,6 +34,9 @@
                 <td><img src="{{ $item->image?''.Storage::url($item->image):''}}" style="width: 100px" /></td>
                 <td><a href="{{route('route_student_delete',['id'=>$item->id])}}">Xóa</a></td>
                 </tr>  
+
             @endforeach
+            
+          
     </table>
     @endsection
