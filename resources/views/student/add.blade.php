@@ -25,8 +25,8 @@
                     <label for="cmt_truoc">Mặt trước</label><br/>
                 </div>
             </div>
-        </div>
-</div>
+         </div>
+         </div>
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
   @endsection
